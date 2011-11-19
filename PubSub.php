@@ -28,14 +28,7 @@ class PubSub {
    * @author Baylor Rae'
    */
   public static function subscribe($event_name, $callback, $mode = 'standard') {
-    // array_push(self::$events, array(
-    //   $event_name => array(
-    //     'callback' => $callback,
-    //     'mode' => $mode
-    //   )
-    // ));
-        
-    if( $events = self::find_events($event_name) ) {
+   if( $events = self::find_events($event_name) ) {
       
       if( $events[0]->is_locked() )
         return;
