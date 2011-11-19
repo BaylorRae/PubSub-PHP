@@ -44,7 +44,15 @@ class PubSub {
     
     array_push(self::$events, $event);
   }
-    
+  
+  /**
+   * Calls all the events saved by a particular name
+   *
+   * @param string $event_name 
+   * @param string $params 
+   * @return void
+   * @author Baylor Rae'
+   */
   public static function publish($event_name, $params = '') {
     
     $params = func_get_args();
@@ -66,6 +74,13 @@ class PubSub {
     }
   }
   
+  /**
+   * Removes all events by particular name
+   *
+   * @param string $event_name 
+   * @return void
+   * @author Baylor Rae'
+   */
   public static function unsubscribe($event_name) {
     
     if( $events = self::find_events($event_name) ) {
@@ -77,6 +92,13 @@ class PubSub {
     }
   }
   
+  /**
+   * Used with extendable subscriptions. Calls the current event's parent
+   *
+   * @param string $params 
+   * @return void
+   * @author Baylor Rae'
+   */
   public static function super($params = '') {
     $current_item = self::current_item();
     
@@ -91,6 +113,13 @@ class PubSub {
     }
   }
   
+  /**
+   * Find all events by a name
+   *
+   * @param string $event_name 
+   * @return void
+   * @author Baylor Rae'
+   */
   private static function find_events($event_name) {
     $events = array();
 
@@ -104,6 +133,14 @@ class PubSub {
     return empty($events) ? false : $events;
   }
   
+  /**
+   * Find all events by name and position
+   *
+   * @param string $event_name 
+   * @param integer $position 
+   * @return void
+   * @author Baylor Rae'
+   */
   private static function find_event_by_name_and_position($event_name, $position) {
     foreach( self::$events as $i => $event ) {
       if( $event->name == $event_name && $i == $position )
@@ -112,6 +149,15 @@ class PubSub {
     return false;
   }
   
+  /**
+   * Returns the current event ||
+   * Sets the current item when $new_value is present
+   *
+   * @param string $event_name 
+   * @param integer $new_value 
+   * @return void when setting || array when getting
+   * @author Baylor Rae'
+   */
   private static function current_item($event_name = null, $new_value = null) {
     if( empty($new_value) )
       return self::$current_item;
