@@ -7,57 +7,63 @@ This is an implementation of PubSub for PHP. It has three main "modes" of functi
 
 ## Standard Example
 
-    <?php
+```php
+<?php
 
-    require 'PubSub.php';
+require 'PubSub.php';
 
-    PubSub::subscribe('sayHello', function() {
-      echo "This gets called first";
-    });
+PubSub::subscribe('sayHello', function() {
+  echo "This gets called first";
+});
 
-    PubSub::subscribe('sayHello', function() {
-      echo 'This gets called second';
-    });
-    
-    PubSub::publish('sayHello');
-    
+PubSub::subscribe('sayHello', function() {
+  echo 'This gets called second';
+});
+
+PubSub::publish('sayHello');
+```
+
 ## Extendable Example
 
-    <?php
+```php
+<?php
 
-    require 'PubSub.php';
+require 'PubSub.php';
 
-    // This is the original subscription
-    // All others should eventually need to call this one, but it's not necessary
-    // because it's __extendable__
-    PubSub::subscribe('sayHello', function($name) {
-      echo "<p>Hello $name</p>";
-    }, 'extendable');
+// This is the original subscription
+// All others should eventually need to call this one, but it's not necessary
+// because it's __extendable__
+PubSub::subscribe('sayHello', function($name) {
+  echo "<p>Hello $name</p>";
+}, 'extendable');
 
-    PubSub::subscribe('sayHello', function($name) {
-      $name = strtolower(str_replace(' ', '-', $name));
-      PubSub::super($name);
-    });
-    
-    PubSub::subscribe('sayHello', function($name) {
-      $name .= ', you found my class!';
-      PubSub::super($name);
-    });
-    
-    PubSub::publish('sayHello', 'Wonderful World');
-    
+PubSub::subscribe('sayHello', function($name) {
+  $name = strtolower(str_replace(' ', '-', $name));
+  PubSub::super($name);
+});
+
+PubSub::subscribe('sayHello', function($name) {
+  $name .= ', you found my class!';
+  PubSub::super($name);
+});
+
+PubSub::publish('sayHello', 'Wonderful World');
+```
+
 ## Locked Example
 
-    <?php
-    
-    require 'PubSub.php';
-    
-    PubSub::subscribe('sayHello', function() {
-       echo 'This is the only one called'; 
-    }, 'locked');
-    
-    PubSub::subscribe('sayHello', function() {
-       echo 'this doesn't show up :('; 
-    });
-    
-    PubSub::publish('sayHello');
+```php
+<?php
+
+require 'PubSub.php';
+
+PubSub::subscribe('sayHello', function() {
+   echo 'This is the only one called'; 
+}, 'locked');
+
+PubSub::subscribe('sayHello', function() {
+   echo 'this doesn't show up :('; 
+});
+
+PubSub::publish('sayHello');
+```
