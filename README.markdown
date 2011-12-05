@@ -62,7 +62,7 @@ PubSub::subscribe('sayHello', function() {
 }, 'locked');
 
 PubSub::subscribe('sayHello', function() {
-   echo 'this doesn't show up :('; 
+   echo 'this doesn\'t show up :('; 
 });
 
 PubSub::publish('sayHello');
