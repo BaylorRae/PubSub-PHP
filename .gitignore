@@ -1,0 +1,4 @@
+# composer stuff
+composer.lock
+vendor
+bin
