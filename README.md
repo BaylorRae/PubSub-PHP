@@ -1,4 +1,4 @@
-## PubSub for PHP
+## PubSub for PHP [![Build Status](https://travis-ci.org/BaylorRae/PubSub-PHP.png?branch=master)](https://travis-ci.org/BaylorRae/PubSub-PHP)
 This is an implementation of PubSub for PHP that's designed to have a simple api.
 
 ## Usage
