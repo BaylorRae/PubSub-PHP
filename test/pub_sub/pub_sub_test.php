@@ -1,6 +1,8 @@
 <?php
 
-require dirname(__FILE__) . '/../lib/pub_sub.php';
+require dirname(__FILE__) . '/../../lib/pub_sub/pub_sub.php';
+
+use PubSub\PubSub;
 
 class PubSubTest extends PHPUnit_Framework_TestCase {
   

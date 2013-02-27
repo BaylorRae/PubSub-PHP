@@ -1,4 +1,17 @@
 {
+    "name": "BaylorRae/PubSub-PHP",
+    "type": "library",
+    "description": "publish and subscribe to events with a simple API",
+    "keywords": ["event handling", "pubsub"],
+    "homepage": "https://github.com/BaylorRae/PubSub-PHP",
+    "license": "MIT",
+    "authors": [
+      {
+        "name": "Baylor Rae'",
+        "homepage": "http://baylorrae.com",
+        "role": "Developer"
+    ],
+
     "require-dev": {
         "phpunit/phpunit": "3.7.*"
     },
